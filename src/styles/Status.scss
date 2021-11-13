@@ -1,0 +1,42 @@
+.status {
+  width: 86px;
+  height: 19px;
+  font-size: 10px;
+  position: relative;
+  font-weight: bold;
+  div {
+      border-radius: 4px;
+      height: 100%;
+      padding-top: 3px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+     
+  }
+}
+
+.completed {
+  background-color: #0ca10c;
+  color: white;
+}
+
+.assigned_to {
+  background-color: #cea317;
+  color: white;
+}
+
+.new {
+  background-color: #b94141;
+  color: white;
+}
+
+.declined {
+  background-color: black;
+  color: white;
+}
+
+.started {
+  background-color: rgb(82, 138, 190);
+  color: white;
+}
