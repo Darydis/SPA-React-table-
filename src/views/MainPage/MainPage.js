@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import {useTable, usePagination} from 'react-table';
 import test_data from '../../test_data.json';
-import "./../mainpage/MainPage.scss";
-import Status from "../status/Status";
+import "./MainPage.scss";
+import Status from "../Status/Status";
 import { useNavigate } from "react-router-dom";
 
 const MainPage = () => {
   
   const navigate = useNavigate();
-  const [id, setId] = useState();
   const data = React.useMemo(
     () => test_data,
     []
@@ -130,7 +129,7 @@ const MainPage = () => {
          return (
            <div>
              <tr className='row' style={{cursor: 'pointer'}}  onClick={() => {
-              setId(row.original.id)
+              
               navigate(`/id/${row.original.id}`);
             }} {...row.getRowProps()}>
              {

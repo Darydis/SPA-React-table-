@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router";
 import test_data from '../../test_data.json';
-import Status from "../status/Status";
+import Status from "../Status/Status";
 
 const Page = () => {
   
