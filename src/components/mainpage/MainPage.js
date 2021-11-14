@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import {useTable, usePagination} from 'react-table';
-import test_data from './../test_data.json';
-import "./../styles/MainPage.scss";
-import Status from "./../components/Status";
+import test_data from '../../test_data.json';
+import "./../mainpage/MainPage.scss";
+import Status from "../status/Status";
 import { useNavigate } from "react-router-dom";
-import Page from "./Page";
 
 const MainPage = () => {
   
@@ -19,21 +18,17 @@ const MainPage = () => {
     () => [
       {
         Header: 'Номер/дата',
-        accessor: 'col1', // accessor is the "key" in the data
+        accessor: 'col1', 
         Cell: ({ row }) => (
           <>
-            <div style={{cursor: 'pointer'}} onClick={(id) => {
-              setId(row.original.id)
-              navigate(`/id/${row.original.id}`);
-              
-            }} 
+            <div  
               className="data1"
-              dangerouslySetInnerHTML={{__html: `№${row.original.id}`}}
+              dangerouslySetInnerHTML={{__html: `№${row&&row.original&&row.original.id}`}}
               
               />
             <div
               className="data2"
-              dangerouslySetInnerHTML={{__html: `№${row.original.created_date}`}}
+              dangerouslySetInnerHTML={{__html: `№${row&&row.original&&row.original.created_date}`}}
             />
           </>
         )
@@ -45,11 +40,11 @@ const MainPage = () => {
           <>
             <div 
               className="data1"
-              dangerouslySetInnerHTML={{__html: `${row.original.order_type.name}`}}
+              dangerouslySetInnerHTML={{__html: `${row&&row.original&&row.original.order_type.name}`}}
               />
             <div
               className="data2"
-              dangerouslySetInnerHTML={{__html: `${row.original.created_user.surname} ${row.original.created_user.name[0]}. ${row.original.created_user.patronymic[0]}.`}}
+              dangerouslySetInnerHTML={{__html: `${row&&row.original&&row.original.created_user.surname} ${row.original.created_user.name[0]}. ${row.original.created_user.patronymic[0]}.`}}
             />
           </>
         )
@@ -83,14 +78,11 @@ const MainPage = () => {
     ],
     []
   );
-
-  const tableInstance = useTable({ columns, data })
  
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
     prepareRow,
     page,
     canPreviousPage,
@@ -116,16 +108,14 @@ const MainPage = () => {
      
     <table {...getTableProps()}>
      <thead>
-       {// Loop over the header rows
+       {
        headerGroups.map(headerGroup => (
-         // Apply the header row props
         <div className='thead'>
            <tr {...headerGroup.getHeaderGroupProps()}>
-           {// Loop over the headers in each row
+           {
            headerGroup.headers.map(column => (
-             // Apply the header cell props
              <th {...column.getHeaderProps()}>
-               {// Render the header
+               {
                column.render('Header')}
              </th>
            ))}
@@ -133,22 +123,21 @@ const MainPage = () => {
         </div>
        ))}
      </thead>
-     {/* Apply the table body props */}
      <tbody {...getTableBodyProps()}>
-       {// Loop over the table rows
+       {
        page.map((row,i) => {
-         // Prepare the row for display
          prepareRow(row)
          return (
-           // Apply the row props
            <div>
-             <tr className='row' {...row.getRowProps()}>
-             {// Loop over the rows cells
+             <tr className='row' style={{cursor: 'pointer'}}  onClick={() => {
+              setId(row.original.id)
+              navigate(`/id/${row.original.id}`);
+            }} {...row.getRowProps()}>
+             {
              row.cells.map(cell => {
-               // Apply the cell props
                return (
                  <td {...cell.getCellProps()}>
-                   {// Render the cell contents
+                   {
                    cell.render('Cell')}
                  </td>
                )
@@ -186,18 +175,6 @@ const MainPage = () => {
       </div>
     </button>{' '}
     </div>
-   {/* <span>
-     | Go to page:{' '}
-     <input
-       type="number"
-       defaultValue={pageIndex + 1}
-       onChange={e => {
-         const page = e.target.value ? Number(e.target.value) - 1 : 0
-         gotoPage(page)
-       }}
-       style={{ width: '100px' }}
-     />
-   </span>{' '} */}
    <div className='third'>
    <span> по </span>
    <select className='pageSize'

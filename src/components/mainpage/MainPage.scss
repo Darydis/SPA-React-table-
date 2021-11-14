@@ -2,7 +2,7 @@ $gap: 24px;
 $blue: rgb(58, 124, 248);
 $lightgrey: rgb(218, 218, 218);
 $grey: rgb(160, 160, 160);
-$s: 480px;
+$s: 560px;
 
 .row {
   border-bottom: 1px solid $lightgrey;
@@ -116,7 +116,7 @@ th {
 }
 
 .prev {
-  mask-image: url(./../images/arrow-left.svg);
+  mask-image: url(./../../images/arrow-left.svg);
   mask-position: center;
   mask-repeat: no-repeat;
   background-color: $blue;
@@ -125,7 +125,7 @@ th {
 }
 
 .next {
-  mask-image: url(./../images/arrow-left.svg);
+  mask-image: url(./../../images/arrow-left.svg);
   mask-position: center;
   mask-repeat: no-repeat;
   background-color: $blue;
@@ -182,7 +182,10 @@ th {
 color: #222;
  outline: none; 
 } 
- option { font-weight:normal; } 
+ option { 
+   font-weight:normal;
+   color: $blue;
+   } 
  *[dir="rtl"] .select-css, :root:lang(ar) .select-css, :root:lang(iw) .select-css { 
 background-position: left .7em top 50%, 0 0; 
 padding: .6em .8em .5em 1.4em; 

@@ -1,12 +1,12 @@
 import React from "react";
 import { useParams } from "react-router";
-import test_data from './../test_data.json';
-import Status from "./Status";
+import test_data from '../../test_data.json';
+import Status from "../status/Status";
 
 const Page = () => {
   
   const {ID} = useParams();
-  let record = test_data.find(record => ID == record.id)
+  let record = test_data.find(record => parseInt(ID) === parseInt(record.id))
   console.log(record)
   return(
     <div style={{textAlign: 'left', padding: '60px'}}>

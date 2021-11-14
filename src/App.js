@@ -1,7 +1,7 @@
 import './App.scss';
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
-import MainPage from './components/MainPage';
-import Page from './components/Page';
+import {Routes, Route, BrowserRouter } from "react-router-dom";
+import MainPage from './components/mainpage/MainPage';
+import Page from './components/page/Page';
 
 
 function App() {
