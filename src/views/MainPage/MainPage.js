@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const MainPage = () => {
 	const navigate = useNavigate();
 	const data = React.useMemo(() => test_data, []);
-
+	const moment = require('moment');
 	const columns = React.useMemo(
 		() => [
 			{
@@ -25,7 +25,11 @@ const MainPage = () => {
 						<div
 							className="data2"
 							dangerouslySetInnerHTML={{
-								__html: `№${row && row.original && row.original.created_date}`,
+								__html: `${
+									row &&
+									row.original &&
+									moment(row.original.created_date).format('D/M/YYYY')
+								}`,
 							}}
 						/>
 					</>

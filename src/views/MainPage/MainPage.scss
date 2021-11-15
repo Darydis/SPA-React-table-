@@ -22,9 +22,16 @@ $s: 560px;
 	display: flex;
 	justify-content: space-between;
 	font-size: 12px;
+	overflow-y: auto;
+	overflow-x: hidden;
 	tr th:last-of-type {
 		text-align: center;
 	}
+}
+
+tbody {
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 tr {
@@ -59,7 +66,7 @@ th {
 
 .data1 {
 	font-size: 14px;
-	width: 180px;
+	//width: 180px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
