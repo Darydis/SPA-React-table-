@@ -4,11 +4,11 @@ import test_data from '../../test_data.json';
 import './MainPage.scss';
 import Status from '../../components/Status/Status';
 import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
 
 const MainPage = () => {
 	const navigate = useNavigate();
 	const data = React.useMemo(() => test_data, []);
-	const moment = require('moment');
 	const columns = React.useMemo(
 		() => [
 			{
@@ -121,39 +121,38 @@ const MainPage = () => {
 	return (
 		<>
 			<table {...getTableProps()}>
-				<thead>
-					{headerGroups.map((headerGroup) => (
-						<div className="thead">
-							<tr {...headerGroup.getHeaderGroupProps()}>
-								{headerGroup.headers.map((column) => (
-									<th {...column.getHeaderProps()}>
-										{column.render('Header')}
-									</th>
-								))}
-							</tr>
-						</div>
+				<thead className="thead">
+					{headerGroups.map((headerGroup, i) => (
+						<tr key={i} {...headerGroup.getHeaderGroupProps()}>
+							{headerGroup.headers.map((column, i) => (
+								<th key={i} {...column.getHeaderProps()}>
+									{column.render('Header')}
+								</th>
+							))}
+						</tr>
 					))}
 				</thead>
 				<tbody {...getTableBodyProps()}>
 					{page.map((row, i) => {
 						prepareRow(row);
 						return (
-							<div>
-								<tr
-									className="row"
-									style={{ cursor: 'pointer' }}
-									onClick={() => {
-										navigate(`/id/${row.original.id}`);
-									}}
-									{...row.getRowProps()}
-								>
-									{row.cells.map((cell) => {
-										return (
-											<td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-										);
-									})}
-								</tr>
-							</div>
+							<tr
+								key={i}
+								className="row"
+								style={{ cursor: 'pointer' }}
+								onClick={() => {
+									navigate(`/id/${row.original.id}`);
+								}}
+								{...row.getRowProps()}
+							>
+								{row.cells.map((cell, i) => {
+									return (
+										<td key={i} {...cell.getCellProps()}>
+											{cell.render('Cell')}
+										</td>
+									);
+								})}
+							</tr>
 						);
 					})}
 				</tbody>

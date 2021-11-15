@@ -117,10 +117,9 @@ th {
 		.next {
 			background-color: $lightgrey;
 		}
+		pointer-events: none;
 	}
-	// .first {
 
-	// }
 	.third {
 		display: flex;
 		gap: 8px;
@@ -135,6 +134,7 @@ th {
 	background-color: $blue;
 	width: 20px;
 	height: 20px;
+	cursor: pointer;
 }
 
 .next {
@@ -145,6 +145,7 @@ th {
 	width: 20px;
 	height: 20px;
 	transform: rotate(180deg);
+	cursor: pointer;
 }
 
 .double {
@@ -181,6 +182,7 @@ th {
 	box-sizing: border-box;
 	margin: 0;
 	width: 50px;
+	cursor: pointer;
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
